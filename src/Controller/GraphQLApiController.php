@@ -28,6 +28,6 @@ class GraphQLApiController
     #[Route('/', methods: ['GET'])]
     public function explorer(): Response
     {
-        return $this->explorerRenderer->render('Dashboard');
+        return $this->explorerRenderer->render('API');
     }
 }
