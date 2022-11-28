@@ -7,14 +7,18 @@
         "php": ">=8.1",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "nyholm/psr7": "^1.5",
+        "predis/predis": "^2.0",
+        "symfony/cache": "6.1.*",
         "symfony/console": "6.1.*",
         "symfony/dotenv": "6.1.*",
         "symfony/flex": "^2",
         "symfony/framework-bundle": "6.1.*",
+        "symfony/psr-http-message-bridge": "^2.1",
         "symfony/runtime": "6.1.*",
-        "symfony/yaml": "6.1.*"
-    },
-    "require-dev": {
+        "symfony/twig-bundle": "6.1.*",
+        "symfony/yaml": "6.1.*",
+        "thecodingmachine/graphqlite": "^6.1"
     },
     "config": {
         "allow-plugins": {

@@ -20,5 +20,36 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
+    # Makes classes in the API available to be used as services. This creates a
+    # service per class whose id is the fully-qualified class name.
+    App\GraphQL\Input\:
+        resource: '../src/GraphQL/Input'
+        public: true
+
+    App\GraphQL\Resolver\:
+        resource: '../src/GraphQL/Resolver'
+        public: true
+
+    App\GraphQL\Type\:
+        resource: '../src/GraphQL/Type'
+        public: true
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Controller\GraphQLApiController:
+        arguments: ['@App\GraphQL\ExplorerRenderer', '@graphql_api_request_handler']
+        tags: ['controller.service_arguments']
+
+    App\GraphQL\ExplorerRenderer: ~
+
+    App\GraphQL\RequestHandlerFactory:
+        arguments: ['@service_container']
+
+    graphql_api_request_handler:
+        class: 'App\GraphQL\RequestHandler'
+        factory: ['@App\GraphQL\RequestHandlerFactory', 'createRequestHandler']
+        arguments:
+            - '@cache.app'
+            - 'App\GraphQL\Resolver\'
+            - 'App\GraphQL\'
