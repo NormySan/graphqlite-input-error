@@ -6,7 +6,7 @@
 - Redis
 - Symfony CLI
 
-# Re-producing the error
+## Re-producing the error
 
 1. Install dependencies with composer.
 2. Start application with `symfony serve`.
